@@ -1,0 +1,2 @@
+This is a sample text file used for testing the Client-Server file splitting and storage functionality.
+It will be split into fragments and stored on separate storage servers.
