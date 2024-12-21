@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Bookings</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>All Bookings</h1>
+
+    <table>
+        <tr>
+            <th>Booking ID</th>
+            <th>Customer</th>
+            <th>Price</th>
+            <th>Capacity</th>
+            <th>Show ID</th>
+            <th>Show Start Time</th>
+            <th>Show End Time</th>
+            <th>Event ID</th>
+            <th>Event Name</th>
+            <th>Event Details</th>
+            <th>Organizer</th>
+        </tr>
+
+        {% for booking in bookings %}
+        <tr>
+            <td>{{ booking.id }}</td>
+            <td>{{ booking.customer }}</td>
+            <td>${{ booking.price }}</td>
+            <td>{{ booking.capacity }}</td>
+            <td>{{ booking.show.id }}</td>
+            <td>{{ booking.show.start_time }}</td>
+            <td>{{ booking.show.end_time }}</td>
+            <td>{{ booking.show.event.id }}</td>
+            <td>{{ booking.show.event.name }}</td>
+            <td>{{ booking.show.event.detail }}</td>
+            <td>{{ booking.show.event.organizer }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="11">No bookings available.</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>
