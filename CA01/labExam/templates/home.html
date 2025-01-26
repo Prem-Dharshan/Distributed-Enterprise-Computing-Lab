@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Home{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <h1>Lab Exam Tutorial</h1>
+        <nav>
+            {% if user.is_authenticated %}
+                <form method="POST" action="{% url 'signout' %}">
+                    {% csrf_token %}
+                    <button type="submit">Sign Out</button>
+                </form>
+            {% else %}
+                <a href="{% url 'signin' %}">Sign In</a>
+                <a href="{% url 'signup' %}">Sign Up</a>
+            {% endif %}
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>© 2025 Lab Exam Tutorial by DPD. All rights reserved.</p>
+    </footer>
+</body>
+</html>

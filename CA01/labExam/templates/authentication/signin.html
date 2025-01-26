@@ -1,0 +1,28 @@
+{% extends 'home.html' %}
+
+{% block title %}Sign In{% endblock %}
+
+{% block content %}
+<h2>Sign In</h2>
+
+{% if messages %}
+    {% for message in messages %}
+        {% if 'signin_error' in message.tags or 'signin_success' in message.tags %}
+            <p style="color: {% if 'signin_error' in message.tags %}red{% else %}green{% endif %};">
+                {{ message }}
+            </p>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+<form method="POST">
+    {% csrf_token %}
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+    
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+    
+    <button type="submit">Sign In</button>
+</form>
+{% endblock %}
