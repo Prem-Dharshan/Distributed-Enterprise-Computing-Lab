@@ -1,7 +1,3 @@
-Here’s your correctly formatted Django setup guide:  
-
----
-
 # Setting Up a Django Project  
 
 ### 1. Create and activate a virtual environment (optional but recommended)  
