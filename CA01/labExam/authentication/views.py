@@ -4,6 +4,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib import messages
 
+from user.models import Todo
+
 
 # Sign-up view
 def signup(request):
@@ -45,8 +47,11 @@ def signin(request):
             if not hasattr(user, 'profile') or not user.profile.email:
                 return redirect('create_profile')
 
-            messages.success(request, "Welcome, you are now logged in!", extra_tags='signin_success')
-            return redirect('dashboard')
+            if user.profile.role == 'admin':
+                return redirect('/admin/')
+            else:
+                messages.success(request, "Welcome, you are now logged in!", extra_tags='signin_success')
+            return redirect('/dashboard/')
         else:
             messages.error(request, "Invalid username or password.", extra_tags='signin_error')
             return redirect('signin')
@@ -62,4 +67,5 @@ def signout(request):
 
 @login_required
 def dashboard(request):
-    return render(request, 'authentication/dashboard.html')
+    todos = Todo.objects.filter(user=request.user).order_by('-created_at')
+    return render(request, 'dashboard.html', {'todos': todos})

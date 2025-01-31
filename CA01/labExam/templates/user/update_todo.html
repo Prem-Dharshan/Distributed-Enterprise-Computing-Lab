@@ -1,0 +1,47 @@
+{% extends 'home.html' %}
+{% block title %}Edit To-Do{% endblock %}
+
+{% block content %}
+    <h2>Edit Task</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label>Title:</label>
+        <label>
+            <input type="text" name="title" value="{{ todo.title }}" required>
+        </label><br>
+
+        <label>Description:</label>
+        <label>
+            <textarea name="description">{{ todo.description }}</textarea>
+        </label><br>
+
+        <label>Category:</label>
+        <label>
+            <select name="category">
+                <option value="">-- Select Category --</option>
+                {% for category in categories %}
+                    <option value="{{ category.id }}" {% if todo.category == category %}selected{% endif %}>{{ category.name }}</option>
+                {% endfor %}
+            </select>
+        </label><br>
+
+        <label>Priority:</label>
+        <label>
+            <select name="priority">
+                <option value="L" {% if todo.priority == 'L' %}selected{% endif %}>Low</option>
+                <option value="M" {% if todo.priority == 'M' %}selected{% endif %}>Medium</option>
+                <option value="H" {% if todo.priority == 'H' %}selected{% endif %}>High</option>
+            </select>
+        </label><br>
+
+        <label>Due Date:</label>
+        <label>
+            <input type="date" name="due_date" value="{{ todo.due_date }}" required>
+        </label><br>
+
+        <label>Attachment (optional):</label>
+        <input type="file" name="attachment"><br>
+
+        <button type="submit">Update Task</button>
+    </form>
+{% endblock %}

@@ -3,11 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Home{% endblock %}</title>
+    <title>{% block title %}To-Do App{% endblock %}</title>
+     <style>
+        body { font-family: Arial, sans-serif; margin: 20px; padding: 20px; }
+        nav { background: #007bff; padding: 10px; color: white; }
+        nav a { color: white; margin-right: 10px; text-decoration: none; }
+        .container { max-width: 800px; margin: auto; }
+        form { margin-top: 20px; }
+        button { padding: 5px 10px; background: #007bff; color: white; border: none; cursor: pointer; }
+        button:hover { background: #0056b3; }
+    </style>
 </head>
 <body>
     <header>
-        <h1>Lab Exam Tutorial</h1>
+        <h1>Todo App Tutorial</h1>
         <nav>
             {% if user.is_authenticated %}
                 <form method="POST" action="{% url 'signout' %}">

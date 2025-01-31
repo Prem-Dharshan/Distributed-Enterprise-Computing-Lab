@@ -1,0 +1,47 @@
+{% extends 'home.html' %}
+{% block title %}Create To-Do{% endblock %}
+
+{% block content %}
+    <h2>Create New Task</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label>Title:</label>
+        <label>
+            <input type="text" name="title" required>
+        </label><br>
+
+        <label>Description:</label>
+        <label>
+            <textarea name="description"></textarea>
+        </label><br>
+
+        <label>Category:</label>
+        <label>
+            <select name="category">
+                <option value="">-- Select Category --</option>
+                {% for category in categories %}
+                    <option value="{{ category.id }}">{{ category.name }}</option>
+                {% endfor %}
+            </select>
+        </label><br>
+
+        <label>Priority:</label>
+        <label>
+            <select name="priority">
+                <option value="L">Low</option>
+                <option value="M" selected>Medium</option>
+                <option value="H">High</option>
+            </select>
+        </label><br>
+
+        <label>Due Date:</label>
+        <label>
+            <input type="date" name="due_date" required>
+        </label><br>
+
+        <label>Attachment (optional):</label>
+        <input type="file" name="attachment"><br>
+
+        <button type="submit">Save Task</button>
+    </form>
+{% endblock %}
