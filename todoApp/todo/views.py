@@ -35,7 +35,7 @@ def login_view(request):
         user = authenticate(username=username, password=password)
         if user:
             login(request, user)
-            return redirect('dashboard')
+            return redirect('dashboard', {'success': 'Logged in successfully'})
         else:
             return render(request, 'auth/login.html', {'error': 'Invalid username or password'})
 
