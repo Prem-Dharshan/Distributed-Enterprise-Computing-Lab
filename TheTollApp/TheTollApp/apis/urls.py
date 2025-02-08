@@ -1,7 +1,7 @@
 # urls.py
 from django.urls import path
 from django.contrib.auth import views as auth_views
-from .views import signup_view, dashboard_view, profile_view, update_profile_view
+from .views import signup_view, dashboard_view, profile_view, update_profile_view, pay_toll_view, recharge_view, admin_view
 
 urlpatterns = [
     path('signup/', signup_view, name='signup'),
@@ -12,4 +12,8 @@ urlpatterns = [
     path('dashboard/', dashboard_view, name='dashboard'),
     path('profile/', profile_view, name='user_profile'),
     path('profile/update/', update_profile_view, name='update_profile'),
+    
+    path('pay_toll/', pay_toll_view, name='pay_toll'),
+    path('recharge/', recharge_view, name='recharge'),
+    path('admin_dashboard/', admin_view, name='admin_view'),
 ]

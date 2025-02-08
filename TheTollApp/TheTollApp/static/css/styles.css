@@ -27,13 +27,138 @@ nav a:hover {
     background-color: #555;
 }
 
-.content {
+.nav-left {
+    display: flex;
+    align-items: center;
+}
+
+.nav-center {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+/* Main Dashboard Container */
+.dashboard-container {
     padding: 30px;
     margin: 20px auto;
     max-width: 900px;
     background-color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+}
+
+/* User Info Card */
+.user-info {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.user-info h2 {
+    color: #333;
+}
+
+.user-info p {
+    font-size: 18px;
+    color: #555;
+}
+
+.dashboard-actions {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.action-button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.action-button:hover {
+    background-color: #45a049;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+.card h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.card form p {
+    text-align: left;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.card form input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.card button {
+    background-color: #008CBA;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.card button:hover {
+    background-color: #0073a6;
+}
+
+.transactions-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.transactions-table th,
+.transactions-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.transactions-table th {
+    background-color: #333;
+    color: white;
+}
+
+.transactions-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.transactions-table tr:hover {
+    background-color: #f1f1f1;
 }
 
 .messages {
@@ -58,65 +183,40 @@ nav a:hover {
     color: #721c24;
 }
 
-
-.nav-left {
+/* Filters Container */
+.filter-form {
     display: flex;
-    align-items: center;
-}
-
-.nav-center {
-    flex-grow: 1;
-    text-align: center;
-}
-
-.nav-right {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-}
-
-.card {
-    background-color: #fff;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin: 20px auto;
-    max-width: 800px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
-.card h2 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
+/* Filter Inputs */
+.filter-input {
+    padding: 10px;
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
 }
 
-.card button {
-    background-color: #4CAF50;
-    border: none;
+/* Filter Button */
+.filter-button {
+    background-color: #007bff;
     color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin-top: 10px;
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
     cursor: pointer;
     border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
-.card form p {
-    text-align: left;
-    width: 100%;
-    margin-bottom: 10px;
+.filter-button:hover {
+    background-color: #0056b3;
 }
 
-.card form input {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
