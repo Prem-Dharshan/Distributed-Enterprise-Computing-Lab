@@ -21,10 +21,7 @@
                 <td>{% if todo.is_completed %}✅ Completed{% else %}❌ Pending{% endif %}</td>
                 <td>
                     <a href="{% url 'update_todo' todo.id %}"><button>Edit</button></a>
-                    <form method="post" action="{% url 'delete_todo' todo.id %}" style="display:inline;">
-                        {% csrf_token %}
-                        <button type="submit">Delete</button>
-                    </form>
+                    <a href="{% url 'delete_todo' todo.id %}"><button>Delete</button></a>
                 </td>
             </tr>
         {% endfor %}
