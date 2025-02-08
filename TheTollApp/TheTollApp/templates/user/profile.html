@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+
+{% block title %}User Profile{% endblock %}
+
+{% block content %}
+    <div class="card">
+        <h2>User Profile</h2>
+        <p><strong>Username:</strong> {{ profile.user.username }}</p>
+        <p><strong>Name:</strong> {{ profile.name }}</p>
+        <p><strong>Car Number:</strong> {{ profile.car_number }}</p>
+        <p><strong>Balance:</strong> {{ profile.balance }}</p>
+        <a href="{% url 'update_profile' %}">Update Profile</a>
+    </div>
+{% endblock %}
