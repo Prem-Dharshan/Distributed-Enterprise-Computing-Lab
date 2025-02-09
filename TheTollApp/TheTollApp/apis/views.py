@@ -4,20 +4,20 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth import login
 
-from decimal import Decimal
+from decimal import Decimal, InvalidOperation
 from .models import Profile, Transaction
 from django.utils.timezone import now
 from django.db import transaction as db_transaction
+from .forms import SignUpForm, ProfileUpdateForm
+
 
 @login_required
 def dashboard(request):
     profile = request.user.profile
     transactions = Transaction.objects.filter(profile=profile)
-    return render(request, 'dashboard.html', {'profile': profile, 'transactions': transactions})
+    return render(request, 'user/dashboard.html', {'profile': profile, 'transactions': transactions})
 
 
-from .forms import SignUpForm, ProfileUpdateForm
-from .models import Profile
 
 
 def signup_view(request):
@@ -75,7 +75,7 @@ def dashboard_view(request):
         return redirect('admin_view')  # Redirect superusers to the admin panel
 
     transactions = Transaction.objects.filter(profile=profile)
-    return render(request, 'dashboard.html', {'profile': profile, 'transactions': transactions})
+    return render(request, 'user/dashboard.html', {'profile': profile, 'transactions': transactions})
 
 
 @login_required
@@ -93,14 +93,26 @@ def recharge_view(request):
 @login_required
 def pay_toll_view(request):
     if request.method == 'POST':
-        amount = Decimal(request.POST['amount'])  
-        profile = request.user.profile
+        try:
+            amount = Decimal(request.POST.get('amount', '0'))
+            if amount <= 0:
+                messages.error(request, "Invalid amount. Please enter a positive number.")
+                return redirect('dashboard')
 
-        if profile.balance >= amount:
+            profile = request.user.profile
+
+            if profile.balance < amount:
+                messages.error(request, "Insufficient balance. Please recharge your wallet.")
+                return redirect('dashboard')
+
             with db_transaction.atomic():
                 profile.balance -= amount
                 profile.save()
                 Transaction.objects.create(profile=profile, amt=amount, in_time=now())
+
+            messages.success(request, f"Toll payment of ₹{amount} was successful.")
+        except InvalidOperation:
+            messages.error(request, "Invalid input format. Please enter a valid number.")
 
     return redirect('dashboard')
 
@@ -125,5 +137,12 @@ def admin_view(request):
     if car_number_filter:
         transactions = transactions.filter(profile__car_number__icontains=car_number_filter)
 
-    return render(request, 'admin.html', {'transactions': transactions})
+    return render(request, 'admin/admin.html', {'transactions': transactions})
 
+
+from django.contrib.auth import logout
+
+def logout_view(request):
+    logout(request)
+    messages.success(request, "You have been logged out successfully.")
+    return redirect('login')

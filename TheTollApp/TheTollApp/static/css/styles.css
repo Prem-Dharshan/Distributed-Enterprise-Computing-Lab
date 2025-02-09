@@ -43,7 +43,6 @@ nav a:hover {
     justify-content: flex-end;
 }
 
-/* Main Dashboard Container */
 .dashboard-container {
     padding: 30px;
     margin: 20px auto;
@@ -53,7 +52,6 @@ nav a:hover {
     border-radius: 8px;
 }
 
-/* User Info Card */
 .user-info {
     text-align: center;
     margin-bottom: 20px;
@@ -183,7 +181,6 @@ nav a:hover {
     color: #721c24;
 }
 
-/* Filters Container */
 .filter-form {
     display: flex;
     gap: 15px;
@@ -195,7 +192,6 @@ nav a:hover {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Filter Inputs */
 .filter-input {
     padding: 10px;
     width: 200px;
@@ -204,7 +200,6 @@ nav a:hover {
     font-size: 14px;
 }
 
-/* Filter Button */
 .filter-button {
     background-color: #007bff;
     color: white;
@@ -220,3 +215,11 @@ nav a:hover {
     background-color: #0056b3;
 }
 
+.admin-container {
+    max-width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
