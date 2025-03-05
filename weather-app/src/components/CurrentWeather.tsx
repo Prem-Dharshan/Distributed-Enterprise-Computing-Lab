@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
+import Navbar from "./shared/Navbar";
 
 const API_URL = "http://api.weatherstack.com/current";
 const API_KEY = import.meta.env.VITE_WEATHERSTACK_API_KEY;
@@ -26,6 +27,8 @@ const CurrentWeather = () => {
   });
 
   return (
+    <>
+    <Navbar />
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
       <Card className="w-full max-w-md p-4 shadow-lg rounded-2xl">
         <CardHeader>
@@ -62,6 +65,7 @@ const CurrentWeather = () => {
         </CardContent>
       </Card>
     </div>
+    </>
   );
 };
 

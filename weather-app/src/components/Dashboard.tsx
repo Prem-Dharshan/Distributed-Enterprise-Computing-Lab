@@ -8,6 +8,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import GenericTable from "@/components/GenericTable";
 import ErrorDialog from "./shared/ErrorDialog";
 import WeatherCard, { WeatherData } from "./WeatherCard";
+import Navbar from "./shared/Navbar";
 
 const Dashboard = () => {
   const [city, setCity] = useState("New York");
@@ -49,6 +50,7 @@ const Dashboard = () => {
 
   return (
     <>
+    <Navbar />  
       <div className="mt-4 max-w-6xl w-full bg-white shadow-sm rounded-lg p-6 mx-auto flex flex-row items-center gap-4">
         {/* Avatar */}
         <Avatar>
