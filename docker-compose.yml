@@ -20,3 +20,13 @@ services:
     volumes:
       - ./gateway_service:/app
     restart: always
+
+  notification-service:
+      build:
+        context: ./notification_service
+      container_name: notification-service
+      ports:
+        - "8021:8020"
+      volumes:
+        - ./notification_service:/app
+      restart: always
